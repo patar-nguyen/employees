@@ -10,6 +10,3 @@ CREATE TABLE employee(
   branch VARCHAR(255),
   assigned BOOLEAN
 );
-
-INSERT INTO employee (name, code, profession, color, city, branch, assigned) 
-VALUES ('Patrick', 'F100', 'Full Stack Developer', 'Blue', 'Caledon', 'Plexxis', false);

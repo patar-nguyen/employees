@@ -27,7 +27,7 @@ app.post("/employee", async (req, res) => {
     [name, code, profession, color, city, branch, assigned]);
     res.json(newEmployee.rows[0]);
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
   }
 });
 
@@ -37,6 +37,46 @@ app.get("/employee", async (req, res) => {
     const allEmployees = await pool.query('SELECT * FROM employee');
     res.json(allEmployees.rows);
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
   }
 });
+
+//getting a specific employee with the id
+app.get("/employee/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const oneEmployee = await pool.query('SELECT * from employee WHERE employee_id = $1', [id])
+    res.json(oneEmployee.rows[0]);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+//update an employee information
+app.put("/employee/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, code, profession, color, city, branch, assigned } = req.body;
+    
+    const updateEmployee = await pool.query(`UPDATE employee 
+    SET name = $1, code = $2, profession = $3, color = $4, city = $5, branch = $6, assigned = $7 
+    WHERE employee_id = $8`, 
+    [name, code, profession, color, city, branch, assigned, id]);
+    res.send("Employee updated")
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+//delete employee
+app.delete("/employee/:id", async (req, res) => {
+   try {
+    const { id } = req.params;
+
+    const deleteEmployee = await pool.query('DELETE from employee WHERE employee_id = $1', [id]);
+    res.send("Employee deleted");
+   } catch (err) {
+     console.log(err.message);
+   }
+})
