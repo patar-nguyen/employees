@@ -1,14 +1,15 @@
 import './App.css';
 import React, { Fragment } from 'react';
-import newEmployee from './components/newEmployee';
-import displayEmployee from './components/displayEmployee';
+import NewEmployee from './components/NewEmployee';
+import DisplayEmployee from './components/DisplayEmployee';
 
 function App() {
   return (
       <Fragment>
         <div className="container">
-          <newEmployee />
-          <displayEmployee />
+          <DisplayEmployee />
+          <NewEmployee />
+
         </div>
       </Fragment>
   );
