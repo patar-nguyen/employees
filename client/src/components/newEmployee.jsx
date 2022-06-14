@@ -11,17 +11,18 @@ const NewEmployee = () => {
   const [assigned, setAssigned] = useState(true);
 
   const handleSubmit = async (e) => {
+    //prevent page from refreshing
     e.preventDefault();
 
     try {
       const body = { name, code, profession, color, city, branch, assigned }
       const response = await fetch("http://localhost:3001/employee", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
+        method: "POST", //http method
+        headers: { "Content-Type": "application/json" }, //content header to specify json data being sent
+        body: JSON.stringify(body) //converts object/value into json string
       });
       console.log(response)
-      window.location = "/";
+      window.location = "/"; //return to home page
     } catch (err) {
       console.error(err.message);
     }
@@ -44,15 +45,15 @@ const NewEmployee = () => {
               </button>
             </div>
             <div class="modal-body">
-            <form id="form1" onSubmit={handleSubmit}>
-                      <input type = "text" placeholder="Full Name" className="form-control my-1" onChange={e => {setName(e.target.value)}} required/>
-                      <input type = "text" placeholder="Code" className="form-control my-1" onChange={e => {setCode(e.target.value)}} required/>
-                      <input type = "text" placeholder="Profession" className="form-control my-1" onChange={e => {setProfession(e.target.value)}} required/>
-                      <input type = "text" placeholder="Color" className="form-control my-1" onChange={e => {setColor(e.target.value)}} required/>
-                      <input type = "text" placeholder="City" className="form-control my-1" onChange={e => {setCity(e.target.value)}} required/>
-                      <input type = "text" placeholder="Branch" className="form-control my-1" onChange={e => {setBranch(e.target.value)}} required/>
-                      <input type = "text" placeholder="Assigned" className="form-control my-1" onChange={e => {setAssigned(e.target.value)}} required/>
-                    </form>
+              <form id="form1" onSubmit={handleSubmit}>
+                <input type = "text" placeholder="Full Name" className="form-control my-1" onChange={e => {setName(e.target.value)}} required/>
+                <input type = "text" placeholder="Code" className="form-control my-1" onChange={e => {setCode(e.target.value)}} required/>
+                <input type = "text" placeholder="Profession" className="form-control my-1" onChange={e => {setProfession(e.target.value)}} required/>
+                <input type = "text" placeholder="Color" className="form-control my-1" onChange={e => {setColor(e.target.value)}} required/>
+                <input type = "text" placeholder="City" className="form-control my-1" onChange={e => {setCity(e.target.value)}} required/>
+                <input type = "text" placeholder="Branch" className="form-control my-1" onChange={e => {setBranch(e.target.value)}} required/>
+                <input type = "text" placeholder="Assigned" className="form-control my-1" onChange={e => {setAssigned(e.target.value)}} required/>
+              </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -34,7 +34,7 @@ app.post("/employee", async (req, res) => {
 //getting all employees
 app.get("/employee", async (req, res) => {
   try {
-    const allEmployees = await pool.query('SELECT * FROM employee');
+    const allEmployees = await pool.query('SELECT * FROM employee ORDER BY employee_id ASC');
     res.json(allEmployees.rows);
   } catch (err) {
     console.log(err.message);

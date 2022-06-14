@@ -60,7 +60,7 @@ const DisplayEmployee = () => {
                 <td>{employees.color}</td>
                 <td>{employees.city}</td>
                 <td>{employees.branch}</td>
-                <td>{employees.assigned}</td>
+                <td>{employees.assigned.toString()}</td>
                 <td><EditEmployee employee={employees}/></td>
                 <td><button className="btn btn-danger" onClick={() => deleteEmployee(employees.employee_id)}>Delete</button></td>
               </tr>
