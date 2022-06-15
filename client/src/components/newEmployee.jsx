@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
-
+//useState hook to allow having state variables
 const NewEmployee = () => {
-
+  //setting state to store user information
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [profession, setProfession] = useState("");
@@ -16,12 +16,12 @@ const NewEmployee = () => {
 
     try {
       const body = { name, code, profession, color, city, branch, assigned }
-      const response = await fetch("http://localhost:3001/employee", {
+      const res = await fetch("http://localhost:3001/employee", {
         method: "POST", //http method
-        headers: { "Content-Type": "application/json" }, //content header to specify json data being sent
-        body: JSON.stringify(body) //converts object/value into json string
+        headers: { "Content-Type": "application/json" }, //content header to specify json data being returned
+        //converts the employee info which is in an object into json string because when sending data to a web server the data has to be a string
+        body: JSON.stringify(body) 
       });
-      console.log(response)
       window.location = "/"; //return to home page
     } catch (err) {
       console.error(err.message);
@@ -29,6 +29,7 @@ const NewEmployee = () => {
   }
 
   return (
+    //fragment allows for the use of multiple elements
     <Fragment>
       <div class="text-center">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

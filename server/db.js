@@ -1,4 +1,5 @@
-const Pool = require('pg').Pool;
+//connecting database to server
+const { Pool } = require('pg');
 
 const pool = new Pool({
   user: "patricknguyen",

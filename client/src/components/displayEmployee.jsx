@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+//useEffect hook which allows you to perform side effects
 import EditEmployee from './EditEmployee'
 
 const DisplayEmployee = () => {
@@ -9,7 +10,7 @@ const DisplayEmployee = () => {
       const res = await fetch(`http://localhost:3001/employee/${id}`, {
         method:"DELETE"
       });
-      setEmployee(employee.filter(employees => employees.employee_id !== id));
+      window.location="/";
     } catch (err) {
       console.error(err.message);
     }
@@ -26,7 +27,7 @@ const DisplayEmployee = () => {
       console.error(err.message);
     }
   }
-  //useEffect hook that runs the function when initiated
+  //useEffect hook that runs on the first render
   useEffect(() => {
     getEmployee();
   }, []);
@@ -47,7 +48,6 @@ const DisplayEmployee = () => {
             <th scope="col">Assigned</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
-
           </tr>
         </thead>
         <tbody>

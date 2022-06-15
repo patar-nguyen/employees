@@ -9,7 +9,6 @@ function App() {
         <div className="container">
           <DisplayEmployee />
           <NewEmployee />
-
         </div>
       </Fragment>
   );

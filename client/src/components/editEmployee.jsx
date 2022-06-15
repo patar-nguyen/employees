@@ -15,12 +15,11 @@ const EditEmployee = ({ employee }) => {
     e.preventDefault();
     try {
       const body = { name, code, profession, color, city, branch, assigned }
-      const response = await fetch(`http://localhost:3001/employee/${employee.employee_id}`, {
+      const res = await fetch(`http://localhost:3001/employee/${employee.employee_id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
       });
-      console.log(response)
       window.location = "/";
     } catch (err) {
       console.error(err.message);
@@ -29,15 +28,16 @@ const EditEmployee = ({ employee }) => {
 
   return (
     <Fragment>
-    <button type="button" class="btn btn-warning" data-toggle="modal" data-target={`#id${employee.employee_id}`}>
-      Edit
+      {/* Getting the id of the specific employee when clicked on */}
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target={`#id${employee.employee_id}`}>
+      Update
     </button>
 
     <div class="modal fade" id={`id${employee.employee_id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Note</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Update Employee</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick={() => setName(employee.name)
               + setCode(employee.code) + setProfession(employee.profession) + setColor(employee.color)
               + setCity(employee.city) + setBranch(employee.branch) + setAssigned(employee.assigned)}>
