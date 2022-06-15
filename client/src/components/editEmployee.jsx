@@ -38,7 +38,9 @@ const EditEmployee = ({ employee }) => {
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Note</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick={() => setName(employee.name)
+              + setCode(employee.code) + setProfession(employee.profession) + setColor(employee.color)
+              + setCity(employee.city) + setBranch(employee.branch) + setAssigned(employee.assigned)}>
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -52,7 +54,9 @@ const EditEmployee = ({ employee }) => {
             <input type="text" className="form-control my-1" value={assigned} onChange={(e) => setAssigned(e.target.value)}/>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick={() => setName(employee.name)
+              + setCode(employee.code) + setProfession(employee.profession) + setColor(employee.color)
+              + setCity(employee.city) + setBranch(employee.branch) + setAssigned(employee.assigned)}>Close</button>
             <button type="button" class="btn btn-primary" onClick={(e) => handleSubmit(e)}>Save changes</button>
           </div>
         </div>
