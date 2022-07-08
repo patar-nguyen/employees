@@ -15,3 +15,4 @@ Express is used to create the server and cors is used as the middleware to conne
 
 ## Frontend
 The front end of the application was created using React and Bootstrap. Bootstrap was used to create the tables, buttons, and to make everything look more appealing and user friendly. The application consisted of three components, adding an employee, editing and employee, and displaying/deleting an employee. 
+
